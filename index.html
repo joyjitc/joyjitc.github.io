@@ -1,79 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gaganjot Kaur | Personal Website</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TransientTourist | Personal Website</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #f4f4f4;
-      margin: 0;
-      padding: 0;
+      font-family: Georgia, 'Times New Roman', Times, serif;
       color: #333;
+      background-color: #fff;
+      margin: 2rem;
+      line-height: 1.6;
     }
-    header {
-      background: #4a90e2;
-      color: white;
-      padding: 2rem;
-      text-align: center;
+    .top-container {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 1rem;
+      max-width: 700px;
+      margin: 0 auto 3rem;
     }
-    section {
-      max-width: 800px;
-      margin: 2rem auto;
-      padding: 1rem;
-      background: white;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    .logo {
+      height: 2.5rem;
+      width: auto;
     }
-    footer {
-      text-align: center;
-      padding: 1rem;
-      background: #222;
-      color: white;
-      position: relative;
+    nav {
+      font-size: 1rem;
     }
     nav a {
-      margin: 0 1rem;
-      color: white;
+      color: #555;
       text-decoration: none;
+      margin: 0 0.5rem;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    main {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    section {
+      display: none;
+    }
+    section.active {
+      display: block;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Gaganjot Kaur</h1>
-    <p>Backend Developer | Researcher | Explorer of Ideas</p>
+  <div class="top-container">
+    <a href="#posts" class="logo-link">
+      <img src="TransientTourist.svg" alt="TransientTourist logo" class="logo">
+    </a>
     <nav>
+      <a href="#blog">Blog</a> |
+      <a href="#projects">Projects</a> |
       <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
     </nav>
-  </header>
+  </div>
 
-  <section id="about">
-    <h2>About Me</h2>
-    <p>
-      Hi, I’m Gaganjot Kaur, a passionate backend developer and MASc student specializing in high-performance computing and cybersecurity research. I enjoy building intelligent, scalable systems and exploring new technologies.
-    </p>
-  </section>
+  <main>
+    <section id="about">
+      <h2>About Me</h2>
+      <p>Hi, I am Joyjit Choudhury.</p>
+      <p>I am a Master of Science (Thesis) candidate in Computer Science at the University of Victoria (Sept 2024 – Dec 2025) with a GPA of 9.0/9. My research focuses on VLS Databases and distributed LLM agent orchestration.</p>
+      <p>I previously completed a Master of Applied Computer Science at Concordia University (Jan 2024 – Aug 2024) and a B.Tech in Computer Science &amp; Engineering from the National Institute of Technology Durgapur (2014 – 2018, GPA: 8.74/10).</p>
+      <p>My professional experience includes:</p>
+      <ul>
+        <li><strong>Graduate Teaching Assistant</strong>, University of Victoria — Jan 2025 to Apr 2025. Graded and supported instruction for CSC 429/529 Cryptography courses.</li>
+        <li><strong>Senior Software Engineer (SDE‑3)</strong>, Turvo (Lineage, Inc.) — Aug 2019 to Dec 2023. Integrated OpenRouteService and Nominatim APIs, modernized the internal map library, led critical feature development, and mentored new hires. Technologies: Java, Python, Elasticsearch, RabbitMQ, Redis.</li>
+        <li><strong>Applications Engineer</strong>, Oracle — Jul 2018 to Aug 2019. Developed and maintained the Budget Control Module for Mercury, an in‑house supply chain planning tool. Technologies: Java, REST APIs, JAX‑RS, EJB, JPA, SQL, JavaScript.</li>
+        <li><strong>Research Intern</strong>, Complex Networks Research Group (IIT Kharagpur) — Summer 2017. Created a C++ package for fitting parameters of sparse multidimensional Hawkes processes to support doctoral research.</li>
+      </ul>
+    </section>
+    <section id="blog">
+      <h2>Blog</h2>
+      <p>Welcome to my blog—posts on software, research, and travel.</p>
+    </section>
+    <section id="projects">
+      <h2>Projects</h2>
+      <div>
+        <h3>GNOME Calendar</h3>
+        <p>Open Source Contribution | C, GTK+</p>
+        <ul>
+          <li>Authored and merged patches fixing bugs in the week-view functionality.</li>
+          <li>Contributed to the calendar application for the GNOME Desktop Environment.</li>
+        </ul>
+      </div>
+    </section>
+    <section id="posts">
+      <h2>Posts</h2>
+      <p>Here you'll find my latest articles and tutorials.</p>
+    </section>
+  </main>
 
-  <section id="projects">
-    <h2>Projects</h2>
-    <ul>
-      <li><strong>AIS Cyberattack Simulator:</strong> Benchmarking spoofing detection via synthetic maritime data.</li>
-      <li><strong>Squirrel Master:</strong> Intelligent contract-solving system using cluster-based agent decomposition.</li>
-      <li><strong>GPUGNN:</strong> Optimized sparse matrix operations for graph neural networks on GPUs.</li>
-    </ul>
-  </section>
-
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Email: gaganjot@example.com</p>
-    <p>GitHub: <a href="https://github.com/gaganjot">github.com/gaganjot</a></p>
-  </section>
-
-  <footer>
-    <p>&copy; 2025 Gaganjot Kaur</p>
-  </footer>
+  <script type="module">
+    document.addEventListener('DOMContentLoaded', function() {
+      const sections = document.querySelectorAll('section');
+      const navLinks = document.querySelectorAll('.top-container a');
+      function showSection(id) {
+        sections.forEach(s => s.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+      }
+      navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          showSection(this.getAttribute('href').substring(1));
+        });
+      });
+      showSection('posts');
+    });
+  </script>
 </body>
 </html>
