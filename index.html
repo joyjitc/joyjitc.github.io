@@ -7,7 +7,7 @@
   <link rel="icon" type="image/svg+xml" href="TransientTourist_mini.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Manrope:wght@500&display=swap" rel="stylesheet">
   <style>
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -32,9 +32,13 @@
       font-size: 1rem;
     }
     nav a {
-      color: #555;
+      font-family: 'Manrope', sans-serif; /* New font applied */
+      font-weight: 500; /* A medium weight, not bold */
+      font-size: 0.95rem; /* Adjusted for the new font's appearance */
+      color: #333; /* Darker color for better contrast */
       text-decoration: none;
       margin: 0 0.5rem;
+      letter-spacing: 0.5px; /* Added subtle spacing */
     }
     nav a:hover {
       text-decoration: underline;
@@ -53,7 +57,7 @@
 </head>
 <body>
   <div class="top-container">
-    <a href="#posts" class="logo-link">
+    <a href="#about" class="logo-link">
       <img src="TransientTourist.svg" alt="TransientTourist logo" class="logo">
     </a>
     <nav>
@@ -69,8 +73,8 @@
       <p>I'm Joyjit Choudhury, a computer scientist, researcher and software engineer. I like to work on complex problems related to distributed systems and AI.</p>
       <p>Currently, I'm a grad student at the University of Victoria, BC, Canada. My research areas include VLS Databases and LLM based multi-agent orchestration.
       I previously worked as a senior backend developer at a US logistics startup <a href="https://turvo.com/" target="_blank">Turvo</a> (acquired by <a href="https://www.onelineage.com/" target="_blank">Lineage</a>).
-      Before that I was as a full-stack engineer at <a href="https://turvo.com/" target="_blank">Oracle</a>.</p>
-      <p>I hold a bachelor's degree in Computer Science & Engineering from NIT Durgapur. Some of my hobbies are reading, listening to all kinds of music, cycling, playing Rocket League.</p>
+      Before that I was a full-stack engineer at <a href="https://turvo.com/" target="_blank">Oracle</a>.</p>
+      <p>I hold a bachelor's degree in Computer Science & Engineering from NIT Durgapur. Some of my hobbies are reading, listening to all kinds of <a href="https://open.spotify.com/playlist/2Q0ibmGvOgvVbFI94MdHS3?si=MFqwY9adQOWflX3PATlXCQ&nd=1&dlsi=6760034d27954467" target="_blank">music</a>, cycling, playing <a href="https://www.rocketleague.com/" target="_blank">Rocket League</a>.</p>
 
       <p>Here are some of my past and ongoing <a href="#projects">projects</a>.</p>
       
@@ -119,26 +123,34 @@
         </ul>
       </div>
     </section>
-    <section id="posts">
-      <h2>Posts</h2>
-      <p>Here you'll find my latest articles and tutorials.</p>
-    </section>
   </main>
 
   <script type="module">
     document.addEventListener('DOMContentLoaded', function() {
       const sections = document.querySelectorAll('section');
-      const navLinks = document.querySelectorAll('.top-container a');
+      const navLinks = document.querySelectorAll('a[href^="#"]'); 
+
       function showSection(id) {
-        sections.forEach(s => s.classList.remove('active'));
-        document.getElementById(id).classList.add('active');
+        const section = document.getElementById(id);
+        if (section) {
+          sections.forEach(s => s.classList.remove('active'));
+          section.classList.add('active');
+        }
       }
+
       navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-          e.preventDefault();
-          showSection(this.getAttribute('href').substring(1));
-        });
+        if (link.pathname === window.location.pathname) {
+          link.addEventListener('click', function(e) {
+            if (this.getAttribute('href').length > 1) {
+              e.preventDefault();
+              const targetId = this.getAttribute('href').substring(1);
+              showSection(targetId);
+            }
+          });
+        }
       });
+
+      // Initially show the 'about' section
       showSection('about');
     });
   </script>
